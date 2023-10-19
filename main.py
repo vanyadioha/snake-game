@@ -42,12 +42,12 @@ while game_is_on:
         or snake.snake_head.ycor() > 280
         or snake.snake_head.ycor() < -280
     ):
-        game_is_on = False
         score.game_over()
+        snake.game_over()
     # Detect body collision
     for body in snake.snake[1:]:
         if snake.snake_head.distance(body) < 10:
-            game_is_on = False
             score.game_over()
+            snake.game_over()
 # Don't write any code below this
 screen.exitonclick()

@@ -10,6 +10,10 @@ RIGHT = 0
 class Snake:
     def __init__(self):
         self.snake = []
+        self.create_snake()
+        self.snake_head = self.snake[0]
+
+    def create_snake(self):
         # Initial snake body
         for i in range(3):
             snake_element = Turtle("square")
@@ -17,8 +21,6 @@ class Snake:
             snake_element.color("white")
             snake_element.goto(-20 * i, 0)
             self.snake.append(snake_element)
-
-        self.snake_head = self.snake[0]
 
     def move(self):
         for i in range(len(self.snake) - 1, 0, -1):
@@ -51,3 +53,10 @@ class Snake:
         snake_element.color("white")
         snake_element.goto(self.snake[-1].position())
         self.snake.append(snake_element)
+
+    def game_over(self):
+        for seg in self.snake:
+            seg.goto(1000, 1000)
+        self.snake.clear()
+        self.create_snake()
+        self.snake_head = self.snake[0]
